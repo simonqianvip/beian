@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'beian.spiders'
 #USER_AGENT = 'beian (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -71,9 +71,9 @@ ITEM_PIPELINES = {
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-#AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_ENABLED = True
 # The initial download delay
-#AUTOTHROTTLE_START_DELAY = 5
+AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
 #AUTOTHROTTLE_MAX_DELAY = 60
 # The average number of requests Scrapy should be sending in parallel to
@@ -98,11 +98,11 @@ MYSQL_USER = 'root'
 MYSQL_PASSWD = '123456'
 # end of MySQL database configure setting
 
-
-# LOG_ENCODING = 'utf-8'
-LOG_FILE='beian_log'
-# LOG_LEVLE='INFO'
-# LOG_ENABLED
+# start log
+LOG_ENABLED = True
+LOG_ENCODING = 'utf-8'
+LOG_FILE = '../log/beian_log'
+LOG_LEVLE = 'INFO'
 # LOG_FORMAT
 # LOG_DATEFORMAT
 # LOG_STDOUT=True

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 # Define your item pipelines here
-#
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: http://doc.scrapy.org/en/latest/topics/item-pipeline.html
 import logging
@@ -62,11 +61,15 @@ class MySQLStoreBeianPipeline(object):
           PRIMARY KEY (`id`)
         ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
         """
-        conn.execute("""
-                insert into beian_info(title, addr, link, titleId, pdate)
-                values(%s, %s, %s, %s ,%s)
-                """, (item['title'],item['addr'] ,item['link'],item['titleId'],item['date']))
-        logger.info('insert into success')
+        conn_execute = conn.execute("""
+                insert into beian_info(title, addr, link, titleId, pdate,company)
+                values(%s, %s, %s, %s ,%s,%s)
+                """, (item['title'], item['addr'], item['link'], item['titleId'], item['date'], item['company']))
+        print 'conn.execute = %s'%conn_execute
+        if conn_execute:
+            logger.info('---------- insert into success ----------')
+        else:
+            logger.info('---------- insert into fail ----------')
 
     def _handle_error(self, failue):
         logger.error(failue)

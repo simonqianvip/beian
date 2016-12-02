@@ -16,4 +16,5 @@ class BeianItem(scrapy.Item):
     date = scrapy.Field()
     titleId = scrapy.Field()
     addr = scrapy.Field()
+    company = scrapy.Field()
     pass
